@@ -32,7 +32,7 @@ export function authenticate(req, res, next) {
 export function checkRole(requiredRole) {
     return async (req, res, next) => {
         try {
-            const user = await User.findByPk(req.id_user, {
+            const user = await User.findByPk(req.user.id_user, {
                 include: { model: Role, as: "role" },
             });
 
