@@ -9,7 +9,6 @@ import {
 } from "../models/index.js";
 import { scrypt } from "../utils/scrypt.js";
 import { getMediaById } from "../services/tmdbService.js";
-import { name } from "ejs";
 
 async function seedTables() {
     try {
@@ -24,7 +23,7 @@ async function seedTables() {
         });
 
         // 2. Création des utilisateurs
-        const adminPassword = "adminpassword";
+        const adminPassword = process.env.ADMIN_PASSWORD;
         const adminHashedPassword = scrypt.hash(adminPassword);
         const john = await User.create({
             nickname: "JohnDoe",
@@ -37,7 +36,7 @@ async function seedTables() {
             email_verified: true,
             id_role: adminRole.id_role,
         });
-        const userPassword = "userpassword";
+        const userPassword = process.env.USER_PASSWORD;
         const userHashedPassword = scrypt.hash(userPassword);
         const jane = await User.create({
             nickname: "JaneSmith",
