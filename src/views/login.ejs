@@ -1,39 +1,27 @@
 <%- include('./partials/header') %>
-<div class="page-wrapper">
-   
-
-    <main>
-    <section>
-    <div class="login-container">
-        <% if (typeof errorMessage !== "undefined" && errorMessage) { %>
-        <div class="error-login"><%= errorMessage %></div>
-        <% } %>
-        <form action="/login" method="POST">
-            <!-- Champ Email -->
-            <div class="input-group">
-                <div class="mail-title">Email</div>
-                <input type="email" name="email" class="class-email" required />
-                    </div>
-                    <!-- Champ Mot de passe -->
-                    <div class="input-group">
-                        <div class="password-title">Mot de passe</div>
-                        <input
-                            type="password"
-                            name="password"
-                            class="class-password"
-                            required
-                        />
-                    </div>
-                    <!-- Boutton valider -->
-                    <button type="submit" class="login-button">Se connecter</button>
-                </form>
-            </div>
-        </section>
-
-    </main>
-
-
-
-</div>
-<%- include('./partials/footer') %>
-
+    <div class="page-wrapper">
+        <main>
+            <section>
+                <div class="login-container">
+                    <% if (typeof errorMessage !=="undefined" && errorMessage) { %>
+                        <div class="error-login">
+                            <%= errorMessage %>
+                        </div>
+                        <% } %>
+                            <form action="/login" method="POST">
+                                <div class="input-group">
+                                    <label for="email" class="mail-title">Email</label>
+                                    <input type="email" name="email" id="email" class="class-email" required />
+                                </div>
+                                <div class="input-group">
+                                    <label for="password" class="password-title">Mot de passe</label>
+                                    <input type="password" name="password" id="password" class="class-password"
+                                        required />
+                                </div>
+                                <button type="submit" class="login-button">Se connecter</button>
+                            </form>
+                </div>
+            </section>
+        </main>
+    </div>
+    <%- include('./partials/footer') %>
